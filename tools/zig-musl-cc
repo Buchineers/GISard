@@ -1,0 +1,9 @@
+#!/bin/sh
+for arg do
+    case "$arg" in
+        --target=*) ;;
+        *) set -- "$@" "$arg" ;;
+    esac
+    shift
+done
+exec zig cc -target x86_64-linux-musl -mcpu=broadwell "$@"
